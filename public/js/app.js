@@ -19,10 +19,10 @@ app.controller('mainController', ['$http', function($http) {
   this.processForm = () => {
     $http({
      method  : 'POST',
-     url     : '/blog',
+     url     : '/blog/',
      data    : this.formData
     }).then( response => {
-         this.posts.push ( response.data.post );
+         this.posts.push ( response.data );
          this.formData = {};
         } , error => {
     }).catch( err => console.error('Catch:' , err))
