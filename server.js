@@ -8,6 +8,6 @@ app.get('/', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log('===========================');
-  console.log('Photo app on port: ', PORT);
+  console.log('Listening on PORT: ', PORT);
   console.log('===========================');
 });
