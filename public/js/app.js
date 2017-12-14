@@ -2,6 +2,9 @@ const app = angular.module('blog_app', []);
 
 app.controller('mainController', ['$http', function($http) {
 
+  this.posts = [];
+  this.formData = {};
+
   //==== GET/DISPLAY BLOG POSTS ====\\
   $http({
     url: '/blog',
@@ -14,13 +17,11 @@ app.controller('mainController', ['$http', function($http) {
   //==== ADD ==== \\
   this.processForm = () => {
     $http({
-     method  : 'POST',
-     url     : '/blog',
-     data    : this.formData
-    }).then( response => {
-         this.posts.push ( response.data.post );
-         this.formData = {};
-        } , error => {
+     url: '/blog',
+     method: 'POST',
+     data: this.formData
+    }).then(response => {
+         console.log(response)} , error => {
     }).catch( err => console.error('Catch:' , err))
     }
 
