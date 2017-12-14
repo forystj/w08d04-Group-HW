@@ -12,7 +12,7 @@
 
     <!-- blog posts -->
     <div ng-repeat="post in ctrl.posts">
-      <span ng-click="ctrl.editPost( post._id )">Edit</span>
+      <span ng-click="ctrl.findPost( post._id )">Edit</span>
       <span ng-click="ctrl.deletePost( post._id )">x</span>
       <h1>{{ post.title }}</h1>
       <h6>By: {{ post.user }}</h6>
@@ -28,6 +28,12 @@
     		<textarea name="content" ng-model="ctrl.formData.content"></textarea>
         <input type="submit">
       </form>
+    </div>
+
+    <div ng-repeat="found in ctrl.results">
+      {{ found.user }}
+      {{ found.title }}
+      {{found.content}}
     </div>
 
 

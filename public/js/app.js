@@ -4,6 +4,7 @@ app.controller('mainController', ['$http', function($http) {
 
   this.formdata = {};
   this.posts = [];
+  this.results = {};
 
 
   //==== GET/DISPLAY BLOG POSTS ====\\
@@ -42,6 +43,17 @@ app.controller('mainController', ['$http', function($http) {
     }).catch (err => console.log('catch:' , err))
   }
 
+  this.findPost = ( id ) => {
+    $http({
+      method: 'GET',
+      url   : '/blog/' + id
+    }).then ( response => {
+      this.results = response.data;
+      console.log( response.data)
+    }, error => {
+      console.log(error.message);
+    }).catch (err => console.log('catch:' , err))
+  }
 
   //==== DELETE ====\\
   this.deletePost = ( id ) => {

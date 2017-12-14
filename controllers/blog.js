@@ -9,6 +9,12 @@ router.get('/', async (req, res) => {
 	res.json(allblogs);
 });
 
+router.get('/:id', async (req, res) => {
+
+	const findblogs = await Blog.findOne({id: req.params.id});
+	res.json(findblogs);
+});
+
 router.post('/', async (req, res) => {
 
 	try {
