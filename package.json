@@ -1,0 +1,23 @@
+{
+  "name": "w08d04-group-hw",
+  "version": "1.0.0",
+  "description": "- Ryan Julier",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forystj/w08d04-Group-HW.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/forystj/w08d04-Group-HW/issues"
+  },
+  "homepage": "https://github.com/forystj/w08d04-Group-HW#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
