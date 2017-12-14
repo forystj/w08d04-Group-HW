@@ -30,7 +30,7 @@ app.controller('mainController', ['$http', function($http) {
     $http({
       method: 'PUT',
       url   : '/blog/' + post._id,
-      data  : {  }
+      data  :  this.formData
     }).then ( response => {
       console.log( response.data.edited)
     }, error => {
