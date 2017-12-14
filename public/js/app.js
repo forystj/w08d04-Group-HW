@@ -2,6 +2,10 @@ const app = angular.module('blog_app', []);
 
 app.controller('mainController', ['$http', function($http) {
 
+  this.formdata = {};
+  this.posts = [];
+
+
   //==== GET/DISPLAY BLOG POSTS ====\\
   $http({
     url: '/blog',
@@ -26,7 +30,7 @@ app.controller('mainController', ['$http', function($http) {
 
 
   //==== EDIT ====\\
-  this.editHoliday = () => {
+  this.editPost = ( id ) => {
     $http({
       method: 'PUT',
       url   : '/blog/' + post._id,
@@ -40,7 +44,7 @@ app.controller('mainController', ['$http', function($http) {
 
 
   //==== DELETE ====\\
-  this.deleteHoliday = ( id ) => {
+  this.deletePost = ( id ) => {
   $http({
     method: 'DELETE',
     url   : '/blog/' + id
