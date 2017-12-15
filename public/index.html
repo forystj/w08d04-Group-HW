@@ -12,7 +12,7 @@
 
     <!-- blog posts -->
     <div ng-repeat="post in ctrl.posts">
-      <span ng-click="ctrl.findPost( post._id )">Edit</span>
+      <span ng-click="ctrl.findPost( post._id )" ng-show="ctrl.toggle">Edit</span>
       <span ng-click="ctrl.deletePost( post._id )">x</span>
       <h1>{{ post.title }}</h1>
       <h6>By: {{ post.user }}</h6>
@@ -30,10 +30,14 @@
       </form>
     </div>
 
-    <div ng-repeat="found in ctrl.results">
-      {{ found.user }}
-      {{ found.title }}
-      {{found.content}}
+    <div>
+      <h2>Before editing, click edit above your blog post<h2>
+      <form ng-submit="ctrl.editPost(ctrl.results[0]._id)">
+        <input type="text" ng-model="ctrl.formDataUpdate.user" value="{{ctrl.results[0].user}}">
+        <input type="text" ng-model="ctrl.formDataUpdate.title" value="{{ctrl.results[0].title}}" >
+        <input type="text" ng-model="ctrl.formDataUpdate.content" value="{{ctrl.results[0].content}}">
+        <input type="submit">
+      </form>
     </div>
 
 

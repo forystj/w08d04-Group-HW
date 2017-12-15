@@ -4,16 +4,18 @@ app.controller('mainController', ['$http', function($http) {
 
   this.formdata = {};
   this.posts = [];
-  this.results = {};
+  this.results = [];
 
 
   //==== GET/DISPLAY BLOG POSTS ====\\
-  $http({
-    url: '/blog',
-    method: 'GET'
-  })
-  .then(response => this.posts = response.data)
-  .catch(err => console.error(err))
+  this.getPosts = () => {
+    $http({
+      url: '/blog',
+      method: 'GET'
+    })
+    .then(response => this.posts = response.data)
+    .catch(err => console.error(err))
+  }
 
 
   //==== ADD ==== \\
@@ -34,10 +36,11 @@ app.controller('mainController', ['$http', function($http) {
   this.editPost = ( id ) => {
     $http({
       method: 'PUT',
-      url   : '/blog/' + post._id,
-      data  :  this.formData
+      url   : '/blog/' + id,
+      data  :  this.formDataUpdate
     }).then ( response => {
-      console.log( response.data.edited)
+      console.log( response )
+      this.getPosts();
     }, error => {
       console.log(error.message);
     }).catch (err => console.log('catch:' , err))
@@ -48,12 +51,13 @@ app.controller('mainController', ['$http', function($http) {
       method: 'GET',
       url   : '/blog/' + id
     }).then ( response => {
-      this.results = response.data;
+      this.results.push(response.data);
       console.log( response.data)
     }, error => {
       console.log(error.message);
     }).catch (err => console.log('catch:' , err))
   }
+
 
   //==== DELETE ====\\
   this.deletePost = ( id ) => {
@@ -66,5 +70,7 @@ app.controller('mainController', ['$http', function($http) {
     } , error => { console.error( error.message )
   }).catch( err => console.error('Catch:', err))
     }
+
+    this.getPosts();
 
 }]); //closes mainController

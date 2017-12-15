@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
 
-	const findblogs = await Blog.findOne({id: req.params.id});
+	const findblogs = await Blog.findOne({_id: req.params.id});
 	res.json(findblogs);
 });
 
