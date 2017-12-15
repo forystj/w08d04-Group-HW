@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="blog_app">
+  <head>
+    <meta charset="utf-8">
+    <title>Ryan & Foryst's Blog</title>
+    <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js'>
+    </script>
+    <script type="text/javascript" src='./js/app.js'>
+    </script>
+  </head>
+  <body ng-controller="mainController as ctrl">
+
+    <!-- blog posts -->
+    <div ng-repeat="post in ctrl.posts">
+      <span ng-click="ctrl.findPost( post._id )" ng-show="ctrl.toggle">Edit</span>
+      <span ng-click="ctrl.deletePost( post._id )">x</span>
+      <h1>{{ post.title }}</h1>
+      <h6>By: {{ post.user }}</h6>
+      <p>{{ post.content }}</p>
+    </div>
+
+
+    <!-- new post form -->
+    <div>
+      <form ng-submit="ctrl.processForm()">
+        <input type="text" placeholder="AUTHOR" ng-model="ctrl.formData.user" />
+    		<input type="text" placeholder="BLOG TITLE" ng-model="ctrl.formData.title" />
+    		<textarea name="content" ng-model="ctrl.formData.content"></textarea>
+        <input type="submit">
+      </form>
+    </div>
+
+    <div>
+      <h2>Before editing, click edit above your blog post<h2>
+      <form ng-submit="ctrl.editPost(ctrl.results[0]._id)">
+        <input type="text" ng-model="ctrl.formDataUpdate.user" value="{{ctrl.results[0].user}}">
+        <input type="text" ng-model="ctrl.formDataUpdate.title" value="{{ctrl.results[0].title}}" >
+        <input type="text" ng-model="ctrl.formDataUpdate.content" value="{{ctrl.results[0].content}}">
+        <input type="submit">
+      </form>
+    </div>
+
+
+
+  </body>
+</html>
