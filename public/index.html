@@ -12,7 +12,7 @@
 
     <!-- blog posts -->
     <div ng-repeat="post in ctrl.posts">
-      <span ng-click="ctrl.findPost( post._id )" ng-show="ctrl.toggle">Edit</span>
+      <span ng-click="ctrl.findPost( post._id )">Edit</span>
       <span ng-click="ctrl.deletePost( post._id )">x</span>
       <h1>{{ post.title }}</h1>
       <h6>By: {{ post.user }}</h6>
